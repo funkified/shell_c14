@@ -6,6 +6,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <sys/wait.h>
+#include <sys/types.h>
+
 /*prototypes*/
 
 void print_prompt(void);

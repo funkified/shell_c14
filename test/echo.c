@@ -36,7 +36,7 @@ int main (int argc, char **argv)
 
 void print_prompt(void)
 {
-	fprintf(stderr, "$ ");
+	fprintf(stderr, "#cisfun$ ");
 }
 void print_prompt2(void)
 {
