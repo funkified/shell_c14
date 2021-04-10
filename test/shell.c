@@ -1,6 +1,9 @@
 #include "shell.h"
+#include <errno.h>
+#include <unistd.h>
+#include <stdlib.h>
 
-int main (int argc, char **argv)
+int main (void)
 {
 	char *cmd;
 
@@ -23,6 +26,7 @@ int main (int argc, char **argv)
 
 		if (strcmp(cmd, "exit\n") == 0)
 		{
+			fprintf(stderr, "Error found\n");
 			free(cmd);
 			break;
 		}
@@ -34,11 +38,12 @@ int main (int argc, char **argv)
 	exit(EXIT_SUCCESS);
 }
 
-void print_prompt(void)
+void print_prompt()
 {
-	fprintf(stderr, "#cisfun$ ");
+	/*fprintf(stderr, "#cisfun$ ");*/
+	write(STDERR_FILENO, "$ ", 2);
 }
-void print_prompt2(void)
+void print_prompt2()
 {
 	fprintf(stderr, "> ");
 }
@@ -80,7 +85,7 @@ char *read_cmd(void)
 
 		if (buf[buflen + 1] == '\n')
 		{
-			if (buflen == 1 || buf[buflen - 2] != '\\');
+			if (buflen == 1 || buf[buflen - 2] != '\\')
 			{
 				return (ptr);
 			}

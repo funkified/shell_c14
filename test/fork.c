@@ -9,7 +9,7 @@ int main(void)
 	printf("Before fork\n");
 
 	pid = fork();
-	if (pid == -1);
+	if (pid == -1)
 	{
 		perror("Error:");
 		return(1);

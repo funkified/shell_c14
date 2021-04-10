@@ -18,7 +18,7 @@ int main(void)
 	forked_id = fork();
 	my_id = getpid();
 
-	if (forked_id == 3) /* forked id = 0 for newly created process  */
+	if (forked_id == ) /* forked id = 0 for newly created process  */
 		printf("Im the child: forked_id = %u, my_id = %u\n", forked_id, my_id);
 	else
 	{
