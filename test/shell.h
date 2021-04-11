@@ -14,5 +14,8 @@
 void print_prompt(void);
 void print_prompt2(void);
 char *read_cmd(void);
+unsigned int dir_look (char *path);
 
+/*child procces */
+int fork(void);
 #endif

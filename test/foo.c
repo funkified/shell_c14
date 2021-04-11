@@ -1,7 +1,7 @@
 #include "shell.h"
 #include <dirent.h>
 
-int path (int argc, char *argv[])
+/*unsigned int path (int argc, char *argv[])
 {
 	DIR *dir;
 	struct dirent *ad;
@@ -22,4 +22,22 @@ int path (int argc, char *argv[])
 	closedir(dir);
 
 	return (0);
+}*/
+
+unsigned dir_look (char *path)
+{
+	unsigned int dir = 0, idx = 0, flag = 0;
+
+	while (path[idx])
+	{
+		if (path[idx] != ':')
+			flag = 1;
+		if ((flag && path[idx + 1] == ':')|| (flag && path[idx + 1] == '\0'))
+		{
+			++dir;
+			flag = 0;
+	}
+	++idx;
+	}
+	return (dir);
 }

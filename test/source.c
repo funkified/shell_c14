@@ -4,7 +4,7 @@
 
 void unget_char(struct source_s *src)
 {
-	if(src->curpos < 0)
+	if (src->curpos < 0)
 	{
 		return;
 	}
@@ -36,7 +36,7 @@ char next_char(struct source_s *src)
 		src->curpos = src->bufsize;
 		return (EOF);
 	}
-	return (src->buffer[src->buffer]);
+	return (src->buffer[src->curpos]);
 }
 	
 char peek_char(struct source_s *src)
@@ -66,7 +66,7 @@ void skip_white_spaces(struct source_s *src)
 {
 	char c;
 
-	if(!src || !src->buffer)
+	if (!src || !src->buffer)
 	{
 		return;
 	}
