@@ -3,11 +3,11 @@
 #include <unistd.h>
 
 
-int _strcmp(char *s1, char *s2, int length)
+int _strcmp(char *s1, char *s2)
 {
 	int i;
 
-	for (i = 0; s1[i] < length && s2[i] < length; i++)
+	for (i = 0; s1[i] != '\0' && s2[i] != '\0'; i++)
 	{
 		if (s1[i] != s2[i])
 		{
@@ -45,24 +45,22 @@ int _strcmp(char *s1, char *s2, int length)
 
 int main(int argc, char *argv[], char *envp[])
 {
-	int i, j, length = 0;
+	int i, j, length = 0, length2 = 0;
 	char *str = "PATH=";
+	int result;
 
 	while (str[length])// get length of our input string
 		length++;
 
-	//printf("Length of string: %d\n", length);
-
 	for (i = 0; envp[i] != NULL; i++)
 	{
-		if ((_strcmp(str, envp[i], length) == 0))
+		if ((_strcmp(str, envp[i]) == 0))
 		{
 			printf("%s\n", envp[i]);
-//			return;
-	}
+		}
 	}
 
 	printf("\n");
 
-	return 0;
+	return(0);
 }
