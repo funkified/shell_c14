@@ -60,6 +60,6 @@ void getsArgs(void); /*Esta funcion separa la cadena ingresada por el usuario en
 void showDir(void); /*Esta func ejecuta el comando dir*/
 void echo(void); /*Esta func ejecuta el comando echo*/
 void Externalcmd(void); /*Esta func ejecuta lo que se considere comandos externos*/
-
+int _strcmp(char *s1, char *s2);
 
 #endif
