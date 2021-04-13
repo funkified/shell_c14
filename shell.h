@@ -11,7 +11,7 @@
 #include <fcntl.h>
 #include <stdio_ext.h>
 #include <dirent.h>
-
+#include <stdarg.h>
 /**
  * struct data - struct for bypass the restrictioctons ommitting global variables
  * @tokens: 1st
