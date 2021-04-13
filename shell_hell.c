@@ -6,9 +6,9 @@ int main(void)
 	int endRun = 1;
 
 	getcwd(PWD, maxEnvCmd);
-	strcpy(PATH, getenv("PATH"));
-	strcpy(HOME, PWD);
-	strcpy(SHELL, PWD);
+	_strcpy(PATH, getenv("PATH"));
+	_strcpy(HOME, PWD);
+	_strcpy(SHELL, PWD);
 
 	do
 	{
@@ -21,7 +21,7 @@ int main(void)
 		{
 			getArgs();
 
-			if(_strcmp(cmd,"cd") == 0)
+			if(strcmp(cmd,"cd") == 0)
 			{
 				if(args[1]) /* verify if additional parameters*/
 				{
@@ -31,32 +31,32 @@ int main(void)
 						getcwd(PWD, maxEnvCmd);
 				}
 			}
-			else if (_strcmp(cmd,"dir") == 0)
+			else if (strcmp(cmd,"dir") == 0)
 			{
 				showDir();
 			}
-			else if (_strcmp(cmd,"clr") == 0)
+			else if (strcmp(cmd,"clr") == 0)
 			{
 				_strcpy(cmd,"clear");
 				externalCmd();
 			}
-			else if (_strcmp(cmd,"environ") == 0)
+			else if (strcmp(cmd,"environ") == 0)
 			{
 				_printf(" Environment variables:\n");
 				_printf("  HOME=%s\n  PWD=%s\n", HOME, PWD);
 				_printf("  SHELL=%s\n  PATH=%s\n", SHELL, PATH);
 			}
-			else if(_strcmp(cmd,"echo") == 0)
+			else if(strcmp(cmd,"echo") == 0)
 			{
 				if(args[1])
 					echo();
 			}
-			else if(_strcmp(cmd, "pwd") == 0)
+			else if(strcmp(cmd, "pwd") == 0)
 			{
 				_printf("%s\n", PWD);
 			}
 			
-			else if(_strcmp(cmd, "exit") == 0)
+			else if(strcmp(cmd, "exit") == 0)
 			{
 				endRun = 0; /* Value of 0 exits the program*/
 			}
@@ -76,7 +76,7 @@ void getArgs()
 		args[i] = NULL; /*clear list of arguments*/
 	}
 	strtok(cmd, " ");
-	i == 0; /*separate argument string in tokens*/
+	i = 0; /*separate argument string in tokens*/
 	args[i] = cmd; /*1st argument is the command*/
 
 	while((args[++i] = strtok(NULL," ")) != NULL && i < (max_args - 2));
@@ -111,7 +111,7 @@ void showDir(void)
 
 		while(++cnt < filesFound)
 		{
-			if(strcmp(folderList[cnt]->d_name,".") != 0 && strcmp(list[cnt]->d_name,"..") != 0)
+			if(strcmp(folderList[cnt]->d_name,".") != 0 && strcmp(folderList[cnt]->d_name,"..") != 0)
 				_printf(" %s\n", folderList[cnt]->d_name);
 		}
 	}
@@ -124,7 +124,7 @@ void echo(void)
 	int k = 0;
 	char aux[6];
 
-	while(args[++k])
+	while (args[++k])
 	{
 		for (i = 0; i < strlen(args[k]); i++)
 		{
@@ -140,17 +140,17 @@ void echo(void)
 
 				aux[j] = '\0';
 				/* check for individual environment vars*/
-				if(_strcmp(aux, "SHELL") == 0)
+				if(strcmp(aux, "SHELL") == 0)
 					_printf("%s", SHELL), i+=5;
 
-				else if(_strcmp(aux,"PATH",4) == 0)
+				else if (strncmp(aux,"PATH", 4) == 0)
 					_printf("%s", PATH), i+=4;
 
-				else if(_strcmp(aux,"PWD",3) == 0)
+				else if(strncmp(aux,"PWD", 3) == 0)
 					_printf("%s", PWD), i+=3;
 
-				else if(_strcmp(aux,"HOME",4) == 0)
-					_printf("%s", HOME), i+=4;
+				else if(strncmp(aux,"HOME", 4) == 0)
+					_printf("%s", HOME), i+= 4;
 
 				else _printf("$");
 			}

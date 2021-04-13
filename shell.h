@@ -32,8 +32,7 @@ char *_strcat(char *dest, char *src);
 int _strlen(char *s);
 int _printStr(va_list args);
 int _printChar(va_list args);
-int printDec(va_list args);
-
+int _printDec(va_list args);
 void prompt(void);
 void print_prompt(void);
 void print_prompt2(void);
