@@ -55,11 +55,12 @@ void shownenv(char *args, char **env);
 void show_1_env(char **env);
 int _exec(int argc, char *argv[]);
 int _putstring(char *s);
-void getsArgs(void);
+void getArgs();
 void showDir(void);
 void echo(void);
 void externalCmd(void);
-char *_strcpy(char *dest, char *src, int n);
+/*char *_strcpy(char *dest, char *src, int n);*/
+char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 
 #endif

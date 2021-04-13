@@ -5,7 +5,7 @@
 #define maxEnvCmd 105
 
 char *args[max_args]; /*reads command from user input*/
-char comando[maxEnvCmd]; /*store number of arguments from commands */
+char cmd[maxEnvCmd]; /*store number of arguments from commands */
 
 char SHELL[maxEnvCmd];
 char PATH[maxEnvCmd];

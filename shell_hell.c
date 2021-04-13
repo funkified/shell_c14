@@ -19,7 +19,7 @@ int main(void)
 
 		if(_strlen(cmd) > 0)
 		{
-			getArgs(void);
+			getArgs();
 
 			if(_strcmp(cmd,"cd") == 0)
 			{
@@ -31,13 +31,14 @@ int main(void)
 						getcwd(PWD, maxEnvCmd);
 				}
 			}
-			else if(_strcmp(cmd,"dir") == 0)
+			else if (_strcmp(cmd,"dir") == 0)
 				showDir();
 
-			else if(_strcmp(cmd,"clr") == 0)
-				_strcpy(cmd,"clear"), externalCmd();
+			else if (_strcmp(cmd,"clr") == 0)
+				_strcpy(cmd,"clear");
+				externalCmd();
 
-			else if(_strcmp(cmd,"environ") == 0)
+			else if (_strcmp(cmd,"environ") == 0)
 			{
 				_printf(" Environment variables:\n");
 				_printf("  HOME=%s\n  PWD=%s\n", HOME, PWD);
@@ -60,14 +61,14 @@ int main(void)
 	return 0;
 }
 
-void getArgs(void)
+void getArgs()
 {
 	int i;
 
 	for(i = 0; i < (max_args - 1); i++)
 		args[i] = NULL; /*clear list of arguments*/
 
-	strtok(cmd, " "), i = 0; /*separate argument string in tokens*/
+	strtok(cmd, " ") i == 0; /*separate argument string in tokens*/
 	args[i] = cmd; /*1st argument is the command*/
 
 	while((args[++i] = strtok(NULL," ")) != NULL && i < (max_args - 2));
@@ -102,7 +103,7 @@ void showDir(void)
 
 		while(++cnt < filesFound)
 		{
-			if(strcmp(folderList[cnt]->d_name,".") != 0 && strcmp(lista[cnt]->d_name,"..") != 0)
+			if(strcmp(folderList[cnt]->d_name,".") != 0 && strcmp(list[cnt]->d_name,"..") != 0)
 				_printf(" %s\n", folderList[cnt]->d_name);
 		}
 	}
@@ -134,13 +135,13 @@ void echo(void)
 				if(_strcmp(aux, "SHELL") == 0)
 					_printf("%s", SHELL), i+=5;
 
-				else if(_strncmp(aux,"PATH",4) == 0)
+				else if(_strcmp(aux,"PATH",4) == 0)
 					_printf("%s", PATH), i+=4;
 
-				else if(_strncmp(aux,"PWD",3) == 0)
+				else if(_strcmp(aux,"PWD",3) == 0)
 					_printf("%s", PWD), i+=3;
 
-				else if(_strncmp(aux,"HOME",4) == 0)
+				else if(_strcmp(aux,"HOME",4) == 0)
 					_printf("%s", HOME), i+=4;
 
 				else _printf("$");
