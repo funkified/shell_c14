@@ -85,3 +85,34 @@ int _strcmp(char *s1, char *s2)
 	int len = 0;
 
 	for (len = 0; s1[len] == s2[len]; len++)
+		if (s1[len] == '\0')
+			return (0);
+
+	return (s1[len] - s2[len]);
+
+}
+/**
+ * _strncpy - copy a string
+ * @dest: var to be copied into
+ * @src: source var
+ * @n: number of bytes
+ * Return: Copied string
+ */
+
+char *_strncpy(char *dest, char *src, int n)
+{
+	int i;
+
+	for (i = 0; i < n && src[i] != '\0'; i++)
+	{
+		dest[i] = src[i];
+	}
+
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+
+	return (dest);
+}

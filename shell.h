@@ -1,4 +1,4 @@
-#ifndef __SHELL_H
+
 #define __SHELL_H__
 
 #include <stdio.h>
@@ -51,13 +51,15 @@ void shownenv(char *args, char **env);
 char *env_value(char *str, char *delim);
 char *_getenv(char *name, char **env);
 void _free(struct data *d);
+void shownenv(char *args, char **env);
 void show_1_env(char **env);
 int _exec(int argc, char *argv[]);
 int _putstring(char *s);
-void getArgs(void);
-void showDir(void);
-void echo(void);
+void getsArgs(void); /*Esta funcion separa la cadena ingresada por el usuario en 
+						 palabras individuales, la 1ra palabra sera considerada comando y el resto sus argumentos*/
+void showDir(void); /*Esta func ejecuta el comando dir*/
+void echo(void); /*Esta func ejecuta el comando echo*/
 void Externalcmd(void); /*Esta func ejecuta lo que se considere comandos externos*/
-int _strcmp(char *s1, char *s2);
-
+char *_strncpy(char *dest, char *src, int n);
+int _strcmp(char *s1, char *s2):
 #endif
