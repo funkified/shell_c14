@@ -19,7 +19,7 @@ int main(void)
 
 		if(_strlen(cmd) > 0)
 		{
-			getArgs();
+			getArgs(void);
 
 			if(_strcmp(cmd,"cd") == 0)
 			{

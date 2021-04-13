@@ -1,4 +1,4 @@
-
+#ifndef __SHELL_H__
 #define __SHELL_H__
 
 #include <stdio.h>
@@ -28,7 +28,7 @@ struct data
 /*prototypes*/
 
 int _printf(const char *format, ...);
-int *_strcat(char *dest, char *src);
+char *_strcat(char *dest, char *src);
 int _strlen(char *s);
 int _printStr(va_list args);
 int _printChar(va_list args);
@@ -55,11 +55,11 @@ void shownenv(char *args, char **env);
 void show_1_env(char **env);
 int _exec(int argc, char *argv[]);
 int _putstring(char *s);
-void getsArgs(void); /*Esta funcion separa la cadena ingresada por el usuario en 
-						 palabras individuales, la 1ra palabra sera considerada comando y el resto sus argumentos*/
-void showDir(void); /*Esta func ejecuta el comando dir*/
-void echo(void); /*Esta func ejecuta el comando echo*/
-void Externalcmd(void); /*Esta func ejecuta lo que se considere comandos externos*/
-char *_strncpy(char *dest, char *src, int n);
-int _strcmp(char *s1, char *s2):
+void getsArgs(void);
+void showDir(void);
+void echo(void);
+void externalCmd(void);
+char *_strcpy(char *dest, char *src, int n);
+int _strcmp(char *s1, char *s2);
+
 #endif
