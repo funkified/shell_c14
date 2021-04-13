@@ -10,6 +10,8 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <stdio_ext.h>
+#include <dirent.h>
+
 /**
  * struct data - struct for bypass the restrictioctons ommitting global variables
  * @tokens: 1st
@@ -45,14 +47,6 @@ void shownenv(char *args, char **env);
 void show_1_env(char **env);
 int _exec(int argc, char *argv[]);
 int _putstring(char *s);
-char comando[maxln_Com_Amb]; /*Esta var lee el comando que ingrese el usuario*/
-char *args[max_args]; /*en este arreglo se almacenan los argumentos del comando ingresado*/
-/*Declarando variables de ambiente*/
-char SHELL[maxln_Com_Amb];
-char PATH[maxln_Com_Amb];
-char HOME[maxln_Com_Amb];
-char PWD[maxln_Com_Amb];
-/*Declarando cabeceras de funciones*/
 void separaArgs(void); /*Esta funcion separa la cadena ingresada por el usuario en 
 						 palabras individuales, la 1ra palabra sera considerada comando y el resto sus argumentos*/
 void listaDir(void); /*Esta func ejecuta el comando dir*/
