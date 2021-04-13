@@ -102,19 +102,19 @@ int _strcmp(char *s1, char *s2)
 /*char *_strncpy(char *dest, char *src, int n)*/
 char * _strcpy(char *dest, char *src)
 {
-	int i,
+	int i;
 	int n = 0;
-
-	for (i = 0; i < n && src[i] != '\0'; i++)
+/*	for (i = 0; i < n && src[i] != '\0'; i++)
 	{
 		dest[i] = src[i];
 	}
-
-/*	while (i < n)
+*/
+	while (i < n)
 	{
 		dest[i] = '\0';
 		i++;
 	}
-*/
+	dest[i] = src[i];
+
 	return (dest);
 }
