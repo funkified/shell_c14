@@ -1,19 +1,33 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "shell.h"
-#define MAX_CHAR 80
 
-int main(void)
+
+int main (int argc, char **argv)
 {
-	FILE *f;
-	char s[MAX_CHAR];
-	
-	
-	f = fopen("flie.xt", "r");
+	char *str = NULL, **args, *prompt = "$ ";
+	size_t len = 0;
+	ssize_t chr;
+	int count = 0;
+	(void)argc;
 
-	if (s[MAX_CHAR] != '\0')
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, prompt, 2);
+		
+	signal(SIGINT, handler);
+	
+	while ((chr = getline(&str, &len, stdin)))
 	{
-		fprintf(f, "%s", s);
+		if (chr == EOF)
+		EOF(str);
+		++count;
+		args = strtok(str, prompt);
+		_fork();
+		len = 0;
+		str = NULL;
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, prompt, 2);
 	}
-	return (0);
+	if (chr == -1)
+		return(EXIT_SUCCESS);
+		
+	return (EXIT_SUCCESS);
 }

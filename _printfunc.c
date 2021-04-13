@@ -1,5 +1,5 @@
 #include "holberton.h"
-
+#include "shell.h"
 /**
  *_printStr - this will print a string of character
  *@args: is the next argument in line

@@ -1,11 +1,5 @@
-#include <stdio.h>
-#include <stdio_ext.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <dirent.h>
-#include <sys/types.h>
-#include <sys/wait.h>
+#include "shell.h"
+
 #define max_args 13  /*Numero maximo de argumentos (-1) cuando se trate de un comando externo*/
 #define maxln_Com_Amb 105 /*Numero de caracteres maximo para comando las variables de ambiente*/
 
@@ -24,7 +18,7 @@ void listaDir(void); /*Esta func ejecuta el comando dir*/
 void eco(void); /*Esta func ejecuta el comando echo*/
 void comExterno(void); /*Esta func ejecuta lo que se considere comandos externos*/
 
-main(void)
+int main(void)
 {
 	int continuar = 1;
 	/*Inicializando variables de ambiente*/
@@ -50,11 +44,17 @@ main(void)
 			if (strcmp(comando,"cd") == 0)
 			{ /*Si el comando es cd*/
 				if (args[1]) /*Verificar que cuente con el argumento necesario*/
-					if(chdir(args[1]) != 0) /*La func chdir hace el cambio de directorio si regresa un valor :
-											diferente de cero la operacion no se pudo ejecutar con exito*/
+				{
+					if(chdir(args[1]) != 0) /*La func chdir hace el cambio de directorio si regresa un valor 
+											  diferente de cero la operacion no se pudo ejecutar con exito*/
+					{
 						printf("Error! %s no existe o no se puede cambiar a este directorio\n",args[1]);
-					else getcwd(PWD,maxln_Com_Amb);/*En caso de cambio exitoso actualizar PWD*/
-			}
+					}
+					else 
+					{
+						getcwd(PWD,maxln_Com_Amb);/*En caso de cambio exitoso actualizar PWD*/
+					}
+				}
 			else if(strcmp(comando,"dir") == 0)
 				listaDir(); /*Si el comando es el dir llamar a la func correspondiente*/
 			else if(strcmp(comando,"clr") == 0)
@@ -76,7 +76,8 @@ main(void)
 				continuar = 0; /*Cambiar el valor de continuar para que termine*/
 			else comExterno(); /*Cualquier otra entrada llamar a comExterno*/
 		}
-	} while(continuar); /*Volver a ejecutar mientras no ingresen quit*/
+	}
+	while(continuar) /*Volver a ejecutar mientras no ingresen quit*/
 	return 0;
 }
 
@@ -114,9 +115,9 @@ void listaDir(void)
 	}
 }
 
-void eco(void){
-	int i;
-	int j;
+void eco(void)
+{
+	unsigned int i, j;
 	int k = 0;
 	char aux[6];
 	while(args[++k]){ /*Aqui hay que recorrer argumento por  argumentos mientra este tenga valor*/
@@ -151,8 +152,12 @@ void comExterno()
 	int pid = 0;
 	int status;
 	pid = fork(); /*Crear un proceso hijo*/
-	if(pid < 0) printf("Error! no se pudo crear un proceso hijo");
-	if (pid == 0){
+	if (pid < 0)
+	{
+		printf("Error! no se pudo crear un proceso hijo");
+	}
+		if (pid == 0)
+	{
 		status = execvp(comando,args); /*Trata de ejecutar el comando y los argumentos que tenga*/
 		if(status)
 		{
