@@ -32,12 +32,14 @@ int main(void)
 				}
 			}
 			else if (_strcmp(cmd,"dir") == 0)
+			{
 				showDir();
-
+			}
 			else if (_strcmp(cmd,"clr") == 0)
+			{
 				_strcpy(cmd,"clear");
 				externalCmd();
-
+			}
 			else if (_strcmp(cmd,"environ") == 0)
 			{
 				_printf(" Environment variables:\n");
@@ -50,14 +52,18 @@ int main(void)
 					echo();
 			}
 			else if(_strcmp(cmd, "pwd") == 0)
+			{
 				_printf("%s\n", PWD);
-
+			}
+			
 			else if(_strcmp(cmd, "exit") == 0)
+			{
 				endRun = 0; /* Value of 0 exits the program*/
-
+			}
 			else externalCmd(); /*Cualquier otra entrada llamar a comExterno*/
 		}
-	} while(endRun); /*Infinite loop*/
+	}
+	while(endRun); /*Infinite loop*/
 	return 0;
 }
 
@@ -66,9 +72,11 @@ void getArgs()
 	int i;
 
 	for(i = 0; i < (max_args - 1); i++)
+	{
 		args[i] = NULL; /*clear list of arguments*/
-
-	strtok(cmd, " ") i == 0; /*separate argument string in tokens*/
+	}
+	strtok(cmd, " ");
+	i == 0; /*separate argument string in tokens*/
 	args[i] = cmd; /*1st argument is the command*/
 
 	while((args[++i] = strtok(NULL," ")) != NULL && i < (max_args - 2));
