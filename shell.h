@@ -55,11 +55,11 @@ void shownenv(char *args, char **env);
 void show_1_env(char **env);
 int _exec(int argc, char *argv[]);
 int _putstring(char *s);
-void separaArgs(void); /*Esta funcion separa la cadena ingresada por el usuario en 
+void getsArgs(void); /*Esta funcion separa la cadena ingresada por el usuario en 
 						 palabras individuales, la 1ra palabra sera considerada comando y el resto sus argumentos*/
-void listaDir(void); /*Esta func ejecuta el comando dir*/
-void eco(void); /*Esta func ejecuta el comando echo*/
-void comExterno(void); /*Esta func ejecuta lo que se considere comandos externos*/
+void showDir(void); /*Esta func ejecuta el comando dir*/
+void echo(void); /*Esta func ejecuta el comando echo*/
+void Externalcmd(void); /*Esta func ejecuta lo que se considere comandos externos*/
 
 
 #endif
