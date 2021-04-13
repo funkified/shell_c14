@@ -1,10 +1,11 @@
+#include "shell.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 
 int favNum = 84;
 
-int main (int argc, char *argv[])
+int _exec(int argc, char *argv[])
 {
 	printf("   My PID %d.\n", getpid());
 	
