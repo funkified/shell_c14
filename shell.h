@@ -61,5 +61,5 @@ void externalCmd(void);
 /*char *_strcpy(char *dest, char *src, int n);*/
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
-
+char *_memset(char *s, char b, unsigned int n);
 #endif

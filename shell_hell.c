@@ -14,7 +14,7 @@ int main(void)
 	{
 		_printf("Shell Hell $ ");
 		__fpurge(stdin);
-		memset(cmd,'\0', maxEnvCmd);
+		_memset(cmd,'\0', maxEnvCmd);
 		scanf("%[^\n]s", cmd);
 
 		if(_strlen(cmd) > 0)
