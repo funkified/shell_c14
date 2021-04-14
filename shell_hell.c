@@ -1,6 +1,10 @@
 #include "shell.h"
 #include "global_var.h"
 
+/**
+ * main - main program that prompts user
+ * Return: Nothing
+ */
 int main(void)
 {
 	int endRun = 1;
@@ -65,6 +69,11 @@ int main(void)
 	return (0);
 }
 
+
+/**
+ * getArgs - separates user submitted buffer into tokens
+ * Return: Nothing
+ */
 void getArgs(void)
 {
 	int i;
@@ -74,6 +83,7 @@ void getArgs(void)
 		args[i] = NULL; /*clear list of arguments*/
 	}
 	strtok(cmd, " ");
+
 	i = 0; /*separate argument string in tokens*/
 	args[i] = cmd; /*1st argument is the command*/
 
@@ -83,12 +93,18 @@ void getArgs(void)
 	}
 }
 
+
+/**
+ * showDir - prints list of files and folders of current directory
+ * Return: nothing
+ */
 void showDir(void)
 {
 	char path[maxEnvCmd]; /*custom path string to build*/
 	int filesFound; /*Files found counter*/
 	int cnt = -1;
-	struct dirent **folderList; /* list of files and folders found*/
+/*	struct dirent **folderList;  list of files and folders found*/
+
 
 	_strcpy(path, PWD);
 
@@ -118,6 +134,10 @@ void showDir(void)
 	}
 }
 
+/**
+ * echo - prints a user specified string in a new line
+ * Return: Nothing
+ */
 void echo(void)
 {
 	unsigned int i;
@@ -162,6 +182,11 @@ void echo(void)
 	_printf("\n");
 }
 
+
+/**
+ * externalCmd - executes linux command on user prompt
+ * Return: Nothing
+ */
 void externalCmd(void)
 {
 	int pid = 0;
@@ -178,7 +203,7 @@ void externalCmd(void)
 
 		if (status)
 		{
-			_printf("Error: %s not rechognized\n", cmd);
+			_printf("Error: %s not recognized\n", cmd);
 			exit(1);
 		}
 	}
