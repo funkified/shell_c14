@@ -22,32 +22,25 @@
  * @buffer: 2nd
  * Description: allows to free variables in memory to avoid memorys leaks issues
  */
-
 struct data
 {
 	char *tokens;
 	char *buffer;
 };
 
-/*prototypes*/
-
-int _printf(const char *format, ...);
-char *_strcat(char *dest, char *src);
-int _strlen(char *s);
+/* Printf prototypes */
 int _printStr(va_list args);
 int _printChar(va_list args);
 int _printDec(va_list args);
+int _putchar(char c);
+
+/** shell prototypes */
 void prompt(void);
 char *read_cmd(void);
-unsigned int dir_look (char *path);
-char* _getline(FILE *f, char *s, size_t maxchar);
 int _fork(void);
 void split_args(void);
 void dir_list(void);
 void external_commands(void);
-int _putchar(char c);
-/** enviroment prototypes */
-void shownenv(char *args, char **env);
 char *env_value(char *str, char *delim);
 char *_getenv(char *name, char **env);
 void _free(struct data *d);
@@ -59,7 +52,10 @@ void getArgs(char *cmd, char **args);
 void showDir(char *pwd, char **args);
 void echo(char *pwd, char *home, char *shell, char *path, char **args);
 void externalCmd(char *cmd, char **args);
+/* aux prototypes */
+int _printf(const char *format, ...);
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 char *_memset(char *s, char b, unsigned int n);
+char *_strcat(char *dest, char *src);
 #endif
