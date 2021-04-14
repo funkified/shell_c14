@@ -12,14 +12,15 @@
 #include <stdio_ext.h>
 #include <dirent.h>
 #include <stdarg.h>
+
 /**
- * struct data - struct for bypass the restrictioctons ommitting global variables
+ * struct dirent - struct for bypass the restrictioctons ommitting global variables
  * @tokens: 1st
  * @buffer: 2nd
  * Description: allows to free variables in memory to avoid memorys leaks issues
  */
 
-struct data
+struct dirent
 {
 	char *tokens;
 	char *buffer;
