@@ -8,12 +8,8 @@
 int main(void)
 {
 	int endRun = 1;
-	char *args[max_args];
-	char cmd[maxEnvCmd];
-	char SHELL[maxEnvCmd];
-	char PATH[maxEnvCmd];
-	char HOME[maxEnvCmd];
-	char PWD[maxEnvCmd];
+	char *args[max_args], cmd[maxEnvCmd], SHELL[maxEnvCmd];
+	char PATH[maxEnvCmd], HOME[maxEnvCmd], PWD[maxEnvCmd];
 
 	getcwd(PWD, maxEnvCmd);
 	_strcpy(PATH, getenv("PATH"));
@@ -30,39 +26,12 @@ int main(void)
 		{
 			getArgs(cmd, args);
 
-			if (strcmp(cmd, "cd") == 0)
-			{
-				if (args[1]) /* verify if additional parameters*/
-				{
-					if (chdir(args[1]) != 0)
-						_printf("Error: %s not found\n", args[1]);
-					else
-						getcwd(PWD, maxEnvCmd);
-				}
-			}
-			else if (_strcmp(cmd, "dir") == 0)
-			{
-				showDir(PWD, args);
-			}
-			else if (_strcmp(cmd, "clr") == 0)
-			{
-				_strcpy(cmd, "clear");
-				externalCmd(cmd, args);
-			}
-			else if (_strcmp(cmd, "environ") == 0)
+			if (_strcmp(cmd, "environ") == 0)
 			{
 				_printf(" Environment variables:\n");
 				_printf("  HOME=%s\n  PWD=%s\n", HOME, PWD);
 				_printf("  SHELL=%s\n  PATH=%s\n", SHELL, PATH);
 			}
-			else if (_strcmp(cmd, "echo") == 0)
-			{
-				if (args[1])
-					echo(PWD, HOME, SHELL, PATH, args);
-			}
-			else if (_strcmp(cmd, "pwd") == 0)
-				_printf("%s\n", PWD);
-
 			else if (_strcmp(cmd, "exit") == 0)
 				endRun = 0; /* Value of 0 exits the program*/
 
@@ -77,8 +46,9 @@ int main(void)
 
 
 /**
- * getArgs - separates user submitted buffer into tokens
- * Return: Nothing
+ * getArgs - get arguments from buffer
+ * @cmd: string to be checked as command
+ * @args: string from buffer as arguments
  */
 void getArgs(char *cmd, char **args)
 {
@@ -99,98 +69,9 @@ void getArgs(char *cmd, char **args)
 
 
 /**
- * showDir - prints list of files and folders of current directory
- * @folderList: list of gfiles and folders
- * Return: nothing
- */
-void showDir(char *pwd, char **args)
-{
-	char path[maxEnvCmd]; /*custom path string to build*/
-	int filesFound; /*Files found counter*/
-	int cnt = -1;
-	struct dirent **folderList;
-
-	_strcpy(path, pwd);
-
-	if (args[1])
-	{
-		_strcat(path, "/");
-		_strcat(path, args[1]);
-	}
-	/* if its subfolder, concatenate them*/
-	filesFound = scandir(path, &folderList, 0, alphasort);
-
-	if (filesFound < 0)
-		printf("Error: not found [%s]\n", path);
-
-	else if (filesFound == 2) /* only two entries . and .. nothing else */
-		_printf(" Folder [%s] is empty", path);
-
-	else
-	{ /* if at least one is found*/
-		_printf(" Content found: [%s]\n", path);
-
-		while (++cnt < filesFound)
-		{
-			if (strcmp(folderList[cnt]->d_name, ".") != 0 &&
-					strcmp(folderList[cnt]->d_name, "..") != 0)
-				_printf(" %s\n", folderList[cnt]->d_name);
-		}
-	}
-}
-
-/**
- * echo - prints a user specified string in a new line
- * Return: Nothing
- */
-void echo(char *pwd, char *home, char *shell, char *path, char **args)
-{
-	unsigned int i;
-	int j;
-	int k = 0;
-	char aux[6];
-
-	while (args[++k])
-	{
-		for (i = 0; i < strlen(args[k]); i++)
-		{
-			if (args[k][i] != '$')/* will iterate through each char until $ is found */
-				_printf("%c", args[k][i]);
-
-			else /*if char is $ look if its followed by env var. if yes print it. */
-			{
-				j = -1;
-
-				while ((++j) < 5 && (i + j + 1) <
-						strlen(args[k]) &&
-						args[k][i + j + 1] != '\0')
-					aux[j] = args[k][i + j + 1]; /*Copy to aux chars that follow the $ */
-
-				aux[j] = '\0';
-				if (_strcmp(aux, "SHELL") == 0)
-					_printf("%s", shell), i += 5;
-
-				else if (_strcmp(aux, "PATH") == 0)
-					_printf("%s", path), i += 4;
-
-				else if (_strcmp(aux, "PWD") == 0)
-					_printf("%s", pwd), i += 3;
-
-				else if (_strcmp(aux, "HOME") == 0)
-					_printf("%s", home), i += 4;
-
-				else
-					_printf("$");
-			}
-		}
-		_printf(" ");
-	}
-	_printf("\n");
-}
-
-
-/**
  * externalCmd - executes linux command on user prompt
+ * @cmd: string to be read as command
+ * @args: list of arguments summited
  * Return: Nothing
  */
 void externalCmd(char *cmd, char **args)
