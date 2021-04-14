@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc -Wall -Werror -Wextra -pedantic *.c -o shell
+ -Wall -Werror -pedantic main.c _printf.c auxfunc.c morefunc.c _printfunc.c  -o myShell
