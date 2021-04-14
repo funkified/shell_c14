@@ -96,7 +96,7 @@ void getArgs(void)
 
 /**
  * showDir - prints list of files and folders of current directory
- * @dirent: list of gfiles and folders found
+ * @folderList: list of gfiles and folders found
  * Return: nothing
  */
 void showDir(void)

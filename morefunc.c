@@ -43,22 +43,16 @@ int _strcmp(char *s1, char *s2)
  * Return: Copied string
  */
 
-/*char *_strncpy(char *dest, char *src, int n)*/
 char * _strcpy(char *dest, char *src)
 {
 	int i;
-	int n = 0;
-/*	for (i = 0; i < n && src[i] != '\0'; i++)
-	{
-		dest[i] = src[i];
-	}
-*/
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	dest[i] = src[i];
+	char str;
 
+	for (i = 0; src[i] != '\0'; i++)
+	{
+		str = src[i];
+		dest[i] = str;
+	}
+	dest[i] = ('\0');
 	return (dest);
 }
