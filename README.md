@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-SIMPLE SHELL
--source.c
--token.c
--env.c
--path.c
-
-=======
 # 0x16. C - Simple Shell
 
 ## Requirements
