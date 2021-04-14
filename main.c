@@ -12,10 +12,8 @@ int main(void)
 	char *args[max_args], cmd[maxEnvCmd], SHELL[maxEnvCmd];
 	char PATH[maxEnvCmd], HOME[maxEnvCmd], PWD[maxEnvCmd];
 
-	getcwd(PWD, maxEnvCmd);
-	_strcpy(PATH, getenv("PATH"));
-	_strcpy(HOME, PWD);
-	_strcpy(SHELL, PWD);
+	getcwd(PWD, maxEnvCmd), _strcpy(PATH, getenv("PATH"));
+	_strcpy(HOME, PWD), _strcpy(SHELL, PWD);
 
 	do {
 		_printf(" %s$ ", PWD);
@@ -103,6 +101,7 @@ void externalCmd(char *cmd, char **args)
  * _getEnv - get path from environment variable received
  * @str: pointer to string representing environment variable
  * @envp: environment variables to search in
+ * Return: environment path
  */
 char *_getEnv(char *str, char *envp[])
 {
@@ -112,9 +111,9 @@ char *_getEnv(char *str, char *envp[])
 	{
 		if ((_strcmp(str, envp[i]) == 0))
 		{
-			return(envp[i]);
+			return (envp[i]);
 		}
 	}
-	return(NULL);
+	return (NULL);
 }
 
