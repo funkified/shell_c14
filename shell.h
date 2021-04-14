@@ -38,8 +38,6 @@ void prompt(void);
 void print_prompt(void);
 void print_prompt2(void);
 char *read_cmd(void);
-unsigned int dir_look (char *path);
-char* _getline(FILE *f, char *s, size_t maxchar);
 int _fork(void);
 void split_args(void);
 void dir_list(void);
@@ -47,7 +45,6 @@ void echo(void);
 void external_commands(void);
 int _putchar(char c);
 /** enviroment prototypes */
-void shownenv(char *args, char **env);
 char *env_value(char *str, char *delim);
 char *_getenv(char *name, char **env);
 void _free(struct data *d);
@@ -62,4 +59,5 @@ void externalCmd(void);
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 char *_memset(char *s, char b, unsigned int n);
+
 #endif
