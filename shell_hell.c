@@ -96,6 +96,7 @@ void getArgs(void)
 
 /**
  * showDir - prints list of files and folders of current directory
+ * @dirent: list of gfiles and folders found
  * Return: nothing
  */
 void showDir(void)
@@ -103,7 +104,7 @@ void showDir(void)
 	char path[maxEnvCmd]; /*custom path string to build*/
 	int filesFound; /*Files found counter*/
 	int cnt = -1;
-/*	struct dirent **folderList;  list of files and folders found*/
+	struct dirent **folderList;
 
 
 	_strcpy(path, PWD);
