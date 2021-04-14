@@ -1,5 +1,5 @@
 #include "shell.h"
-#include "global_var.h"
+
 
 /**
  * main - main program that prompts user
@@ -8,17 +8,27 @@
 int main(void)
 {
 	int endRun = 1;
+	char *args[max_args];
+	char cmd[maxEnvCmd];
+	char SHELL[maxEnvCmd];
+	char PATH[maxEnvCmd];
+	char HOME[maxEnvCmd];
+	char PWD[maxEnvCmd];
 
-	getcwd(PWD, maxEnvCmd), _strcpy(PATH, getenv("PATH"));
-	_strcpy(HOME, getenv("HOME")), _strcpy(SHELL, PWD);
+	getcwd(PWD, maxEnvCmd);
+	_strcpy(PATH, getenv("PATH"));
+	_strcpy(HOME, PWD);
+	_strcpy(SHELL, PWD);
 
 	do {
-		_printf("Shell Hell $ "), __fpurge(stdin), _memset(cmd, '\0', maxEnvCmd);
+		_printf(" %s$ ", PWD);
+		__fpurge(stdin);
+		_memset(cmd, '\0', maxEnvCmd);
 		scanf("%[^\n]s", cmd);
 
 		if (_strlen(cmd) > 0)
 		{
-			getArgs();
+			getArgs(cmd, args);
 
 			if (strcmp(cmd, "cd") == 0)
 			{
@@ -32,12 +42,12 @@ int main(void)
 			}
 			else if (_strcmp(cmd, "dir") == 0)
 			{
-				showDir();
+				showDir(PWD, args);
 			}
 			else if (_strcmp(cmd, "clr") == 0)
 			{
 				_strcpy(cmd, "clear");
-				externalCmd();
+				externalCmd(cmd, args);
 			}
 			else if (_strcmp(cmd, "environ") == 0)
 			{
@@ -48,7 +58,7 @@ int main(void)
 			else if (_strcmp(cmd, "echo") == 0)
 			{
 				if (args[1])
-					echo();
+					echo(PWD, HOME, SHELL, PATH, args);
 			}
 			else if (_strcmp(cmd, "pwd") == 0)
 				_printf("%s\n", PWD);
@@ -57,7 +67,7 @@ int main(void)
 				endRun = 0; /* Value of 0 exits the program*/
 
 			else
-				externalCmd();
+				externalCmd(cmd, args);
 		}
 
 	} while (endRun); /*Infinite loop*/
@@ -70,7 +80,7 @@ int main(void)
  * getArgs - separates user submitted buffer into tokens
  * Return: Nothing
  */
-void getArgs(void)
+void getArgs(char *cmd, char **args)
 {
 	int i;
 
@@ -84,29 +94,23 @@ void getArgs(void)
 	args[i] = cmd; /*1st argument is the command*/
 
 	while ((args[++i] = strtok(NULL, " ")) != NULL && i < (max_args - 2))
-	{
-
-	}
+		;
 }
 
 
 /**
  * showDir - prints list of files and folders of current directory
-<<<<<<< HEAD
- * @folderList: list of gfiles and folders found
-=======
->>>>>>> 468bd7e035fb598993272734f7a0bcc900f6dc23
+ * @folderList: list of gfiles and folders
  * Return: nothing
  */
-void showDir(void)
+void showDir(char *pwd, char **args)
 {
 	char path[maxEnvCmd]; /*custom path string to build*/
 	int filesFound; /*Files found counter*/
 	int cnt = -1;
 	struct dirent **folderList;
 
-
-	_strcpy(path, PWD);
+	_strcpy(path, pwd);
 
 	if (args[1])
 	{
@@ -139,7 +143,7 @@ void showDir(void)
  * echo - prints a user specified string in a new line
  * Return: Nothing
  */
-void echo(void)
+void echo(char *pwd, char *home, char *shell, char *path, char **args)
 {
 	unsigned int i;
 	int j;
@@ -164,16 +168,16 @@ void echo(void)
 
 				aux[j] = '\0';
 				if (_strcmp(aux, "SHELL") == 0)
-					_printf("%s", SHELL), i += 5;
+					_printf("%s", shell), i += 5;
 
 				else if (_strcmp(aux, "PATH") == 0)
-					_printf("%s", PATH), i += 4;
+					_printf("%s", path), i += 4;
 
 				else if (_strcmp(aux, "PWD") == 0)
-					_printf("%s", PWD), i += 3;
+					_printf("%s", pwd), i += 3;
 
 				else if (_strcmp(aux, "HOME") == 0)
-					_printf("%s", HOME), i += 4;
+					_printf("%s", home), i += 4;
 
 				else
 					_printf("$");
@@ -189,7 +193,7 @@ void echo(void)
  * externalCmd - executes linux command on user prompt
  * Return: Nothing
  */
-void externalCmd(void)
+void externalCmd(char *cmd, char **args)
 {
 	int pid = 0;
 	int status;
