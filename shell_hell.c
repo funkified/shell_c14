@@ -9,15 +9,11 @@ int main(void)
 {
 	int endRun = 1;
 
-	getcwd(PWD, maxEnvCmd);
-	_strcpy(PATH, getenv("PATH"));
-	_strcpy(HOME, PWD);
-	_strcpy(SHELL, PWD);
+	getcwd(PWD, maxEnvCmd), _strcpy(PATH, getenv("PATH"));
+	_strcpy(HOME, getenv("HOME")), _strcpy(SHELL, PWD);
 
 	do {
-		_printf("Shell Hell $ ");
-		__fpurge(stdin);
-		_memset(cmd, '\0', maxEnvCmd);
+		_printf("Shell Hell $ "), __fpurge(stdin), _memset(cmd, '\0', maxEnvCmd);
 		scanf("%[^\n]s", cmd);
 
 		if (_strlen(cmd) > 0)
@@ -29,35 +25,35 @@ int main(void)
 				if (args[1]) /* verify if additional parameters*/
 				{
 					if (chdir(args[1]) != 0)
-						printf("Error: %s not found\n", args[1]);
+						_printf("Error: %s not found\n", args[1]);
 					else
 						getcwd(PWD, maxEnvCmd);
 				}
 			}
-			else if (strcmp(cmd, "dir") == 0)
+			else if (_strcmp(cmd, "dir") == 0)
 			{
 				showDir();
 			}
-			else if (strcmp(cmd, "clr") == 0)
+			else if (_strcmp(cmd, "clr") == 0)
 			{
 				_strcpy(cmd, "clear");
 				externalCmd();
 			}
-			else if (strcmp(cmd, "environ") == 0)
+			else if (_strcmp(cmd, "environ") == 0)
 			{
 				_printf(" Environment variables:\n");
 				_printf("  HOME=%s\n  PWD=%s\n", HOME, PWD);
 				_printf("  SHELL=%s\n  PATH=%s\n", SHELL, PATH);
 			}
-			else if (strcmp(cmd, "echo") == 0)
+			else if (_strcmp(cmd, "echo") == 0)
 			{
 				if (args[1])
 					echo();
 			}
-			else if (strcmp(cmd, "pwd") == 0)
+			else if (_strcmp(cmd, "pwd") == 0)
 				_printf("%s\n", PWD);
 
-			else if (strcmp(cmd, "exit") == 0)
+			else if (_strcmp(cmd, "exit") == 0)
 				endRun = 0; /* Value of 0 exits the program*/
 
 			else
@@ -96,7 +92,6 @@ void getArgs(void)
 
 /**
  * showDir - prints list of files and folders of current directory
- * @dirent: list of gfiles and folders found
  * Return: nothing
  */
 void showDir(void)
@@ -129,7 +124,8 @@ void showDir(void)
 
 		while (++cnt < filesFound)
 		{
-			if (strcmp(folderList[cnt]->d_name, ".") != 0 && strcmp(folderList[cnt]->d_name, "..") != 0)
+			if (strcmp(folderList[cnt]->d_name, ".") != 0 &&
+					strcmp(folderList[cnt]->d_name, "..") != 0)
 				_printf(" %s\n", folderList[cnt]->d_name);
 		}
 	}
@@ -153,15 +149,16 @@ void echo(void)
 			if (args[k][i] != '$')/* will iterate through each char until $ is found */
 				_printf("%c", args[k][i]);
 
-			else
-			{ /*if char is $ look if its followed by env var. if yes print it. */
+			else /*if char is $ look if its followed by env var. if yes print it. */
+			{
 				j = -1;
 
-				while (++j < 5 && (i + j + 1) < strlen(args[k]) && args[k][i + j + 1] != '\0')
+				while ((++j) < 5 && (i + j + 1) <
+						strlen(args[k]) &&
+						args[k][i + j + 1] != '\0')
 					aux[j] = args[k][i + j + 1]; /*Copy to aux chars that follow the $ */
 
 				aux[j] = '\0';
-				/* check for individual environment vars*/
 				if (_strcmp(aux, "SHELL") == 0)
 					_printf("%s", SHELL), i += 5;
 
