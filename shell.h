@@ -13,8 +13,11 @@
 #include <dirent.h>
 #include <stdarg.h>
 
+#define max_args 13
+#define maxEnvCmd 105
+
 /**
- * struct dirent - struct for bypass the restrictioctons ommitting global variables
+ * struct data - struct for bypass the restrictioctons ommitting global variables
  * @tokens: 1st
  * @buffer: 2nd
  * Description: allows to free variables in memory to avoid memorys leaks issues
@@ -35,13 +38,10 @@ int _printStr(va_list args);
 int _printChar(va_list args);
 int _printDec(va_list args);
 void prompt(void);
-void print_prompt(void);
-void print_prompt2(void);
 char *read_cmd(void);
 int _fork(void);
 void split_args(void);
 void dir_list(void);
-void echo(void);
 void external_commands(void);
 int _putchar(char c);
 /** enviroment prototypes */
@@ -52,10 +52,10 @@ void shownenv(char *args, char **env);
 void show_1_env(char **env);
 int _exec(int argc, char *argv[]);
 int _putstring(char *s);
-void getArgs();
-void showDir(void);
-void echo(void);
-void externalCmd(void);
+void getArgs(char *cmd, char **args);
+void showDir(char *pwd, char **args);
+void echo(char *pwd, char *home, char *shell, char *path, char **args);
+void externalCmd(char *cmd, char **args);
 char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 char *_memset(char *s, char b, unsigned int n);
