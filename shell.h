@@ -20,7 +20,7 @@
  * Description: allows to free variables in memory to avoid memorys leaks issues
  */
 
-struct dirent
+struct data
 {
 	char *tokens;
 	char *buffer;
