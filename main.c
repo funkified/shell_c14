@@ -1,5 +1,6 @@
 #include "shell.h"
 
+char *_getEnv(char *str, char *envp[]);
 
 /**
  * main - main program that prompts user
@@ -97,3 +98,23 @@ void externalCmd(char *cmd, char **args)
 	else
 		wait(NULL); /* parent process hold runtime until child finishes */
 }
+
+/**
+ * _getEnv - get path from environment variable received
+ * @str: pointer to string representing environment variable
+ * @envp: environment variables to search in
+ */
+char *_getEnv(char *str, char *envp[])
+{
+	int i;
+
+	for (i = 0; envp[i] != NULL; i++)
+	{
+		if ((_strcmp(str, envp[i]) == 0))
+		{
+			return(envp[i]);
+		}
+	}
+	return(NULL);
+}
+
