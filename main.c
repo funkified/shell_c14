@@ -1,23 +1,23 @@
 #include "shell.h"
 
-char *_getEnv(char *str, char *envp[]);
 
 /**
  * main - main program that prompts user
- * Return: Nothing
+ * @argc: argument count
+ * @argv: argument list
+ * Return: always 0
  */
-int main(void)
+int main(int argc, char **argv)
 {
 	int endRun = 1;
 	char *args[max_args], cmd[maxEnvCmd], SHELL[maxEnvCmd];
 	char PATH[maxEnvCmd], HOME[maxEnvCmd], PWD[maxEnvCmd];
 
-	getcwd(PWD, maxEnvCmd), _strcpy(PATH, getenv("PATH"));
+	getcwd(PWD, maxEnvCmd), _strcpy(PATH, _getEnv("PATH"));
 	_strcpy(HOME, PWD), _strcpy(SHELL, PWD);
 
 	do {
 		_printf("$ ");
-		__fpurge(stdin);
 		_memset(cmd, '\0', maxEnvCmd);
 		scanf("%[^\n]s", cmd);
 
@@ -99,21 +99,28 @@ void externalCmd(char *cmd, char **args)
 
 /**
  * _getEnv - get path from environment variable received
- * @str: pointer to string representing environment variable
- * @envp: environment variables to search in
+ * @pathName: pointer to string representing environment variable
  * Return: environment path
  */
-char *_getEnv(char *str, char *envp[])
+char *_getEnv(char *pathName)
 {
-	int i;
+	char *envCopy = pathName;
+	int index, sindex;
 
-	for (i = 0; envp[i] != NULL; i++)
+	for (index = 0; environ[index] != NULL; index++)
 	{
-		if ((_strcmp(str, envp[i]) == 0))
+		for (sindex = 0; environ[index][sindex] != '\0'; sindex++)
 		{
-			return (envp[i]);
+			while (environ[index][sindex] == *envCopy)
+			{
+				sindex++;
+				envCopy++;
+			}
+			if (*envCopy == '\0')
+			{
+				return (environ[index]);
+			}
 		}
 	}
 	return (NULL);
 }
-
