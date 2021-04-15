@@ -100,26 +100,26 @@ void externalCmd(char *cmd, char **args)
 
 /**
  * _getEnv - get path from environment variable received
- * @pathName: pointer to string representing environment variable
+ * @str: pointer to string representing environment variable
  * Return: environment path
  */
-char *_getEnv(char *pathName)
+char *_getEnv(char *str)
 {
-	char *envCopy = pathName;
-	int index, sindex;
+	char *envCopy = str;
+	int i, j;
 
-	for (index = 0; environ[index] != NULL; index++)
+	for (i = 0; environ[i] != NULL; i++)
 	{
-		for (sindex = 0; environ[index][sindex] != '\0'; sindex++)
+		for (j = 0; environ[i][j] != '\0'; j++)
 		{
-			while (environ[index][sindex] == *envCopy)
+			while (environ[i][j] == *envCopy)
 			{
-				sindex++;
+				j++;
 				envCopy++;
 			}
 			if (*envCopy == '\0')
 			{
-				return (environ[index]);
+				return (environ[i]);
 			}
 		}
 	}

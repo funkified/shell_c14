@@ -28,7 +28,7 @@ int _putstring(char *s);
 /** Shell prototypes */
 void getArgs(char *cmd, char **args);
 void externalCmd(char *cmd, char **args);
-char *_getEnv(char *pathName);
+char *_getEnv(char *str);
 
 
 /* Aux prototypes */
