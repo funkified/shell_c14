@@ -15,6 +15,7 @@
 #define max_args 13
 #define maxEnvCmd 105
 
+extern char **environ;
 
 /* Printf prototypes */
 int _printStr(va_list args);
@@ -27,7 +28,7 @@ int _putstring(char *s);
 /** Shell prototypes */
 void getArgs(char *cmd, char **args);
 void externalCmd(char *cmd, char **args);
-char *_getEnv(char *str, char *envp[]);
+char *_getEnv(char *str);
 
 
 /* Aux prototypes */
