@@ -18,6 +18,7 @@ int main(int argc, char **argv)
 
 	do {
 		_printf("$ ");
+		__fpurge(stdin);
 		_memset(cmd, '\0', maxEnvCmd);
 		scanf("%[^\n]s", cmd);
 
