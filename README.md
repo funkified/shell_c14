@@ -54,4 +54,3 @@
 #### Your shell will be compiled this way:
 
 * gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
->>>>>>> cca55eacffdbdae67da126017626ab3062b14b09

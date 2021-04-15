@@ -1,6 +1,7 @@
 #include "shell.h"
 
 
+
 /**
  * main - main program that prompts user
  * @argc: argument count
@@ -52,15 +53,9 @@ int main(int argc, char **argv)
  */
 void getArgs(char *cmd, char **args)
 {
-	int i;
+	int i = 0;
 
-	for (i = 0; i < (max_args - 1); i++)
-	{
-		args[i] = NULL; /*clear list of arguments*/
-	}
 	strtok(cmd, " ");
-
-	i = 0; /*separate argument string in tokens*/
 	args[i] = cmd; /*1st argument is the command*/
 
 	while ((args[++i] = strtok(NULL, " ")) != NULL && i < (max_args - 2))
