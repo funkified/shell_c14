@@ -9,7 +9,7 @@ hsh is an sh-compatible language interpreter that executes commands read from a 
 hsh is intended to be an exact copy of Simple SHell with improvements to memory management.
 .SH ARGUMENTS
 .PP
-The first argument is the name of the file containing shell commands. hsh reads commands from the file and exits. The return status of hsh is the exit status of the last command executed in the shell. The exit status is 0 if no commands are executed. If no script can be found in the current directory then it will search through the PATH.
+The first argument is the name of the file containing shell commands. myShell reads commands from the file and exits. The return status of hsh is the exit status of the last command executed in the shell. The exit status is 0 if no commands are executed. If no script can be found in the current directory then it will search through the PATH.
 .SH COMMANDS
 .PP
 A line is read and if the first word of the line is not a reserved word, then the shell has recognized a simple command.
@@ -111,5 +111,5 @@ PPID       The process ID of the parent process of the shell.
 No bugs to report.
 .SH AUTHORS
 .PP
-Sergio Vera
-Jose Vazquez
+Sergio Vera <sergio.vera@icloud.com>
+Jose Vazquez <email@email.com>
