@@ -2,6 +2,9 @@
 #include "global_var.h"
 /**
  *_memset - function that fill first byte of memory are pointed to a const byte
+ * @s: pointer to string
+ * @b: string to be copy
+ * @n: byte count
  * Return: pointer to s
  */
 char *_memset(char *s, char b, unsigned int n)
@@ -36,7 +39,7 @@ int _strcmp(char *s1, char *s2)
 
 }
 /**
- * _strncpy - copy a string
+ * _strcpy - copy a string
  * @dest: var to be copied into
  * @src: source var
  * Return: Copied string
