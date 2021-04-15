@@ -16,7 +16,7 @@ int main(void)
 	_strcpy(HOME, PWD), _strcpy(SHELL, PWD);
 
 	do {
-		_printf(" %s$ ", PWD);
+		_printf("$ ");
 		__fpurge(stdin);
 		_memset(cmd, '\0', maxEnvCmd);
 		scanf("%[^\n]s", cmd);
