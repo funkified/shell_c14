@@ -68,8 +68,8 @@ file and launch the executable file to start your own shell
 
 Use: ```./myShell```:
 ```
-vagrant@vagrant-ubuntu-trusty-64:~/repos/simple_shell$ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
-vagrant@vagrant-ubuntu-trusty-64:~/repos/simple_shell$ ./hsh
+vagrant@vagrant-ubuntu-trusty-64:~/repos/simple_shell$ gcc -Wall -Werror -Wextra -pedantic *.c -o myShell
+vagrant@vagrant-ubuntu-trusty-64:~/repos/simple_shell$ ./myShell
 $
 ```
 ---
@@ -92,7 +92,10 @@ cd | changes the current directory of the process
 ```
 $
 $ ls
-README.md  header.h  helper_funcs.c  hsh  main.c  our_cd.c  our_env.c  showenv.c  static_path.c
+AUTHORS    _printfunc.c  env.c	       holberton.h  man_1_simple_shell	shell.h
+README.md  auxfunc.c	 global_var.h  hsh	    morefunc.c		show_env.c
+_printf.c  compile.sh	 header.h      main.c	    myShell		test
+
 $
 ```
 ---
