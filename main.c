@@ -13,7 +13,8 @@ int main(int argc, char **argv)
 	int endRun = 1;
 	char *args[max_args], cmd[maxEnvCmd], SHELL[maxEnvCmd];
 	char PATH[maxEnvCmd], HOME[maxEnvCmd], PWD[maxEnvCmd];
-
+	
+	(void) argc;
 	getcwd(PWD, maxEnvCmd), _strcpy(PATH, _getEnv("PATH"));
 	_strcpy(HOME, PWD), _strcpy(SHELL, PWD);
 
