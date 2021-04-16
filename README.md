@@ -60,6 +60,19 @@
 |[helper_functions.c](https://github.com/funkified/simple_shell/blob/master/helper_funcs.c) | string manipulation along with free function |
 |[static_path.c](https://github.com/funkified/simple_shell/blob/master/static_path.c)| determines if user input is a valid command by searching all directories in PATH |
 
+
+* Compile all created source code .c files in this repository along with the
+header
+```shell.h```
+file and launch the executable file to start your own shell
+
+Use: ```./myShell```:
+```
+vagrant@vagrant-ubuntu-trusty-64:~/repos/simple_shell$ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+vagrant@vagrant-ubuntu-trusty-64:~/repos/simple_shell$ ./hsh
+$
+```
+---
 ## Available Commands
 
 
@@ -139,8 +152,6 @@ drwxrwxr-x  8 vagrant vagrant  4096 Apr 15 18:08 .git
 -rw-rw-r--  1 vagrant vagrant   947 Apr 15 00:45 show_env.c
 drwxrwxr-x  3 vagrant vagrant  4096 Apr 15 16:13 test
 $
-
-$
 ```
 ---
 ```Ctrl + D```:
@@ -148,7 +159,8 @@ $
 ```
 $
 $ (User types in Ctrl + D here)
-$ (Program has exited)```
+$ (Program has exited)
+```
 ---
 
 ```exit```:
@@ -159,16 +171,13 @@ $ (User types in exit here)
 $ (Program has exited)
 $
 ```
-
-$
-```
 ---
+
 ```env```:
 
 ```
-
-$env
 $
+$ env
 LC_PAPER=es_PR.UTF-8
 XDG_SESSION_ID=3
 LC_ADDRESS=es_PR.UTF-8
@@ -199,24 +208,13 @@ OLDPWD=/home/vagrant
 _=./myShell
 $
 ```
----
+___
 
-$
-```
----
 ```pwd```:
 
 ```
-
-$pwd
 $
-/home/vagrant/simple_shell
+$ pwd
+/home/vagrant/repos/simple_shell
 $
-```
----
 
-
-## Compilation
-#### Your shell will be compiled this way:
-
-* gcc -Wall -Werror -Wextra -pedantic *.c -o myShell
