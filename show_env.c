@@ -11,7 +11,7 @@ void shownenv(char *args, char **env)
 {
 	int count, len;
 
-	if(strcmp("-i", args) == 0)
+	if (strcmp("-i", args) == 0)
 		return;
 
 	for (count = 0; env[count] != NULL; count++)
@@ -19,7 +19,7 @@ void shownenv(char *args, char **env)
 		len = strlen(env[count]);
 		write(STDOUT_FILENO, env[count], len);
 
-		if(strcmp("-0", args) == 0)
+		if (strcmp("-0", args) == 0)
 			write(STDOUT_FILENO, "\0", 1);
 		else
 			write(STDOUT_FILENO, "\n", 1);

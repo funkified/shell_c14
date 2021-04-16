@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "shell1.h"
 #include "holberton.h"
 
 /**
@@ -22,7 +22,7 @@ char *_getenv(char *name, char **env)
 	int index, elements, len = 0;
 	char *env_string = NULL;
 
-	while(name[len])
+	while (name[len])
 		len++;
 
 	env_string = malloc(sizeof(char) * len + 1);
