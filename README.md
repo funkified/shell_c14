@@ -159,13 +159,16 @@ $ (User types in exit here)
 $ (Program has exited)
 $
 ```
----
 
+$
+```
 ---
 ```env```:
-```
-$env
 
+```
+
+$env
+$
 LC_PAPER=es_PR.UTF-8
 XDG_SESSION_ID=3
 LC_ADDRESS=es_PR.UTF-8
@@ -194,17 +197,23 @@ LC_TIME=es_PR.UTF-8
 LC_NAME=es_PR.UTF-8
 OLDPWD=/home/vagrant
 _=./myShell
+$
+```
+---
 
 $
 ```
-___
-
+---
 ```pwd```:
 
 ```
-$pwd
-/home/vagrant/simple_shell
 
+$pwd
+$
+/home/vagrant/simple_shell
+$
+```
+---
 
 
 ## Compilation
