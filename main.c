@@ -15,6 +15,8 @@ int main(int argc, char **argv)
 	char PATH[maxEnvCmd], HOME[maxEnvCmd], PWD[maxEnvCmd];
 	
 	(void) argc;
+	(void) argv;
+
 	getcwd(PWD, maxEnvCmd), _strcpy(PATH, _getEnv("PATH"));
 	_strcpy(HOME, PWD), _strcpy(SHELL, PWD);
 
