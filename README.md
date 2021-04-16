@@ -88,9 +88,25 @@ $
 ```
 $
 $ ls -l
-AUTHORS    _printf.c	 auxfunc.c   env.c	   header.h	hsh	man_1_simple_shell  myShell  show_env.c
-README.md  _printfunc.c  compile.sh  global_var.h  holberton.h	main.c	morefunc.c	    shell.h  test
-$
+total 104
+-rw-rw-r-- 1 vagrant vagrant   152 Apr 15 14:56 AUTHORS
+-rw-rw-r-- 1 vagrant vagrant  5508 Apr 16 20:23 README.md
+-rw-rw-r-- 1 vagrant vagrant   845 Apr 13 20:11 _printf.c
+-rw-rw-r-- 1 vagrant vagrant  1188 Apr 13 22:40 _printfunc.c
+-rw-rw-r-- 1 vagrant vagrant  1063 Apr 15 00:41 auxfunc.c
+-rwxrwxr-x 1 vagrant vagrant   103 Apr 15 16:47 compile.sh
+-rw-rw-r-- 1 vagrant vagrant  1038 Apr 15 00:45 env.c
+-rw-rw-r-- 1 vagrant vagrant    93 Apr 15 14:47 global_var.h
+-rw-rw-r-- 1 vagrant vagrant  1283 Apr 15 03:38 header.h
+-rw-rw-r-- 1 vagrant vagrant  1948 Apr 10 20:57 holberton.h
+-rwxrwxr-x 1 vagrant vagrant 13964 Apr 15 00:27 hsh
+-rw-rw-r-- 1 vagrant vagrant  2305 Apr 15 18:08 main.c
+-rwxrwxr-x 1 vagrant vagrant  4223 Apr 14 23:58 man_1_simple_shell
+-rw-rw-r-- 1 vagrant vagrant   883 Apr 15 01:14 morefunc.c
+-rwxrwxr-x 1 vagrant vagrant 13831 Apr 15 16:47 myShell
+-rw-rw-r-- 1 vagrant vagrant   872 Apr 15 16:47 shell.h
+-rw-rw-r-- 1 vagrant vagrant   947 Apr 15 00:45 show_env.c
+drwxrwxr-x 2 vagrant vagrant  4096 Apr 16 20:02 test
 
 $
 ```
@@ -145,8 +161,8 @@ $
 ```
 ---
 
+---
 ```env```:
-
 ```
 $env
 
