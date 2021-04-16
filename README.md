@@ -73,11 +73,33 @@ cd | changes the current directory of the process
 ^C | man the signal
 \# | handles comments
 
+---
+```ls```:
+
+```
+$
 $ ls
+README.md  header.h  helper_funcs.c  hsh  main.c  our_cd.c  our_env.c  showenv.c  static_path.c
+$
+```
+---
+```ls -l ```:
+
+```
+$
+$ ls -l
 AUTHORS    _printf.c	 auxfunc.c   env.c	   header.h	hsh	man_1_simple_shell  myShell  show_env.c
 README.md  _printfunc.c  compile.sh  global_var.h  holberton.h	main.c	morefunc.c	    shell.h  test
+$
 
-$ ls -la
+$
+```
+---
+```ls -l -a```:
+
+```
+$
+$ls -l -a
 total 112
 drwxrwxr-x  4 vagrant vagrant  4096 Apr 16 19:57 .
 drwxr-xr-x 23 vagrant vagrant  4096 Apr 15 04:01 ..
@@ -100,6 +122,7 @@ drwxrwxr-x  8 vagrant vagrant  4096 Apr 15 18:08 .git
 -rw-rw-r--  1 vagrant vagrant   872 Apr 15 16:47 shell.h
 -rw-rw-r--  1 vagrant vagrant   947 Apr 15 00:45 show_env.c
 drwxrwxr-x  3 vagrant vagrant  4096 Apr 15 16:13 test
+$
 
 $
 ```
