@@ -20,6 +20,8 @@ int main(int argc, char **argv)
 	getcwd(PWD, maxEnvCmd), _strcpy(PATH, _getEnv("PATH"));
 	_strcpy(HOME, PWD), _strcpy(SHELL, PWD);
 
+	signal(SIGINT, SIG_IGN);
+
 	do {
 		_printf("$ ");
 		__fpurge(stdin);
