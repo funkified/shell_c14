@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 	int endRun = 1;
 	char *args[max_args], cmd[maxEnvCmd], SHELL[maxEnvCmd];
 	char PATH[maxEnvCmd], HOME[maxEnvCmd], PWD[maxEnvCmd];
-	
+
 	(void) argc;
 	(void) argv;
 
